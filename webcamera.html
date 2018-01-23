@@ -6,6 +6,7 @@
 	</head>
 	<body>
 <video id="video" autoplay playsinline="true" />
+<canvas id="canvas"></canvas>
 <script>
 	var video = document.getElementById("video");
 	var medias = { audio:false, video:{}};
@@ -16,8 +17,19 @@
 		}).catch(function(err) {
 			window.alert("カメラの使用が許可されませんでした");
 		});
+		var canvas = document.getElementById("canvas");
+		video.addEventListener("loadedmetadata",function(e){
+			canvas.width=video.videoWidth;
+			canvas.height = video.videoHeight;
+
+			var ctx = canvas.getContext("2d");
+			setInterval(function(e)){
+				ctx.drawImage(video,0,0,canvas.width,canvas.height);
+			},33);
+		});
 	}else{
 		//WebRTC非対応環境
+		window.alert("非対応環境です");
 	}
 </script>
 	</body>
