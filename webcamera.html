@@ -17,6 +17,10 @@
 			window.alert("カメラの使用が許可されませんでした");
 		});
 		var canvas = document.getElementById("canvas");
+		//画像を読み込む
+		var img = new Image();
+		img.src = "superman_hero.png"
+
 		video.addEventListener("loadedmetadata",function(e){
 			canvas.width=video.videoWidth;
 			canvas.height = video.videoHeight;
@@ -24,6 +28,7 @@
 			var ctx = canvas.getContext("2d");
 			setInterval(function(e){
 				ctx.drawImage(video,0,0,canvas.width,canvas.height);
+				ctx.drawImage(img,0,0);
 			},33);
 		});
 	}else{
