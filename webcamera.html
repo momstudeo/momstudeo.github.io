@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>	
+<video id="video" autoplay playsinline="true" />
+<script>
+	var video = document.getElementById("video");
+	var medias = { audio:false, video:{}};
+	navigator.mediaDevices.getUserMedia(medias).then(function(stream) {
+		//　video.srcObject にストリームを入れます。
+		video.srcObject = stream;
+	}).catch(function(err) {
+		window.alert("カメラの使用が許可されませんでした");
+	});                
+</script>
+	</body>
+
+</html>
