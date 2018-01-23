@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,36 +6,39 @@
 		<title></title>
 	</head>
 	<body>
+<video id="video" style="display:none;"></video>
 <canvas id="canvas"></canvas>
 <script>
 	var video = document.getElementById("video");
 	var medias = { audio:false, video:{}};
-	if(!!navigator.mediaDevices&&!!navigator.mediaDevices.getUserMedia){
+	if(!!navigator.mediaDevices&&!!navigator.mediaDevices.getUserMedia) {
 		navigator.mediaDevices.getUserMedia(medias).then(function(stream) {
 			//　video.srcObject にストリームを入れます。
 			video.srcObject = stream;
 		}).catch(function(err) {
+			// カメラを許可してください。
 			window.alert("カメラの使用が許可されませんでした");
 		});
-		var canvas = document.getElementById("canvas");
-		//画像を読み込む
-		var img = new Image();
-		img.src = "superman_hero.png"
-
-		video.addEventListener("loadedmetadata",function(e){
-			canvas.width=video.videoWidth;
-			canvas.height = video.videoHeight;
-
-			var ctx = canvas.getContext("2d");
-			setInterval(function(e){
-				ctx.drawImage(video,0,0,canvas.width,canvas.height);
-				ctx.drawImage(img,0,0);
-			},33);
-		});
-	}else{
-		//WebRTC非対応環境
-		window.alert("非対応環境です");
 	}
+	else {
+		// カメラがないです。
+			window.alert("非対応環境です");
+	}
+	var image = new Image();
+	image.src = "superman_hero.png"
+	var canvas = document.getElementById("canvas");
+	video.addEventListener("loadedmetadata",function(e) {
+
+		var ctx = canvas.getContext("2d");
+		canvas.width = video.videoWidth;
+		canvas.height = video.videoHeight;
+
+		setInterval(function(e) {
+			ctx.drawImage(video,0,0,canvas.width,canvas.height);
+			ctx.drawImage(image,0,0);
+		},33);		
+	});
+
 </script>
 	</body>
 
