@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>KAOHAME</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+		<center><h1>キャラクターを作ろう</h1></center>
+		<div class="container">
+			<div class="row justify-content-md-center">
+				<div class="col col-lg-1"></div>
+				<div class="col-md-auto">
+					<video id="video" style="display:none;"></video>
+					<canvas id="canvas"></canvas>
+					<br/>
+					<center>
+						顔を当てはめて「作成！」ボタンを押しましょう。<br/>
+						キャラクターの画像ファイルが作成できるよ。<br/>
+						<button type="button" class="btn btn-primary" onclick="saveCanvas();">作成！</button>
+					</center>
+				</div>
+				<div class="col col-lg-1"></div>
+			</div>
+			<script src="kaohame.js"></script>
+		</div>
+	</body>
+
+</html>
